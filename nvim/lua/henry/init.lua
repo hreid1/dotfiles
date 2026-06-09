@@ -1,2 +1,3 @@
-require("henry.config.lazy")
-require("henry.config.set")
+require("henry.options")
+require("henry.keymaps")
+require("henry.lazy")

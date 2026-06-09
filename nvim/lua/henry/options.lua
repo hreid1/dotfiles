@@ -1,6 +1,3 @@
-vim.g.mapleader = " "
-vim.g.localmapleader = " "
-
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -12,8 +9,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-
-vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.wrap = false
 
@@ -34,3 +29,4 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
