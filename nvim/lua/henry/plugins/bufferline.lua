@@ -23,6 +23,22 @@ return{
                 }
 
             })
+
+            -- New Buffer
+            vim.keymap.set("n", "<leader>nb", "<cmd>enew<cr>")
+
+            -- Navigating buffer
+            vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>")
+            vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>")
+
+            vim.keymap.set("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>")
+            vim.keymap.set("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<cr>")
+            vim.keymap.set("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<cr>")
+            vim.keymap.set("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>")
+            vim.keymap.set("n", "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>")
+
+            -- Closing current buffer
+            vim.keymap.set("n", "<leader>x", "<cmd>bdelete!<cr>")
         end
     }
 }
