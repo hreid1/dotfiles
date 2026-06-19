@@ -91,7 +91,17 @@ return {
 			})
 
 			-- Setup servers with valid LSP names
-			vim.lsp.config("pyright", {})
+			vim.lsp.config("pyright", {
+				settings = {
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "workspace",
+						},
+					},
+				},
+			})
 			vim.lsp.config("bashls", {})
 			vim.lsp.config("ts_ls", {})
 			vim.lsp.config("dockerls", {})

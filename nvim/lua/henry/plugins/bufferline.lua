@@ -3,15 +3,21 @@ return {
         "akinsho/bufferline.nvim",
         version = "*",
         dependencies = "nvim-tree/nvim-web-devicons",
-        enabled = false,
+        enabled = true,
         config = function()
-            require("bufferline").setup({
+            local bufferline = require("bufferline")
+            bufferline.setup({
                 options = {
                     mode = "buffers",
-                    separator_style = "thin",
+                    separator_style = "thick",
+                    -- style_preset = {
+                    --     bufferline.style_preset.minimal,
+                    -- },
+                    --
                     always_show_bufferline = true,
                     show_buffer_close_icons = true,
                     show_close_icon = true,
+                    diagnostics = "nvim_lsp",
 
                     offsets = {
                         {
@@ -19,10 +25,9 @@ return {
                             text = "File Explorer",
                             text_align = "center",
                             separator = true,
-                        }
-                    }
-                }
-
+                        },
+                    },
+                },
             })
 
             -- New Buffer
@@ -40,6 +45,6 @@ return {
 
             -- Closing current buffer
             vim.keymap.set("n", "<leader>x", "<cmd>bdelete!<cr>")
-        end
-    }
+        end,
+    },
 }

@@ -11,6 +11,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.list = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -31,3 +33,5 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.o.clipboard = 'unnamedplus'
+
+vim.g.python3_host_prog = vim.fn.expand('~/.local/share/nvim/venv/bin/python')
