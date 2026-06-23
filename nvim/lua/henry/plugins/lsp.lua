@@ -22,6 +22,7 @@ return {
                     "dockerls",
                     "terraformls",
                     "marksman",
+                    "rust_analyzer",
                 },
                 automatic_installation = true,
             })
@@ -107,6 +108,17 @@ return {
             vim.lsp.config("dockerls", {})
             vim.lsp.config("terraformls", {})
 
+            -- Setup rust_analyzer and tell it to use clippy on save
+            vim.lsp.config("rust_analyzer", {
+                settings = {
+                    ["rust-analyzer"] = {
+                        check = {
+                            command = "clippy",
+                        },
+                    },
+                },
+            })
+
             -- Split the VSCode bundle into actual server identifiers
             vim.lsp.config("html", {})
             vim.lsp.config("cssls", {})
@@ -137,6 +149,7 @@ return {
                 "dockerls",
                 "terraformls",
                 "marksman",
+                "rust_analyzer",
             })
 
             -- Diagnostic display
@@ -148,5 +161,14 @@ return {
                 severity_sort = true,
             })
         end,
+    },
+    {
+        "rust-lang/rust.vim",
+        enabled = false,
+        config = function()
+            -- Optional: Disable rust.vim's built-in formatting engine
+            -- to completely prevent conflicts with your native LSP formatter
+            vim.g.rustfmt_autosave = 0
+        end
     },
 }
