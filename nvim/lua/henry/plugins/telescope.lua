@@ -41,6 +41,8 @@ return {
                 extensions = {},
             })
 
+            require('telescope').load_extension('fzf')
+
             vim.keymap.set("n", "<leader>fd", require("telescope.builtin").find_files, { desc = "[F]in[d] Files" })
         end
     },

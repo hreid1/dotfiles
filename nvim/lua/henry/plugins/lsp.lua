@@ -33,9 +33,6 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
         config = function()
-            -- Create a single augroup for format-on-save to avoid duplicate triggers
-            local format_augroup = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true })
-
             -- Shared on_attach
             local on_attach = function(_, bufnr)
                 local map = function(keys, func, desc)
@@ -54,29 +51,9 @@ return {
                 map("<leader>e", vim.diagnostic.open_float, "Show diagnostic")
             end
 
-            -- Attach keymaps and format-on-save via LspAttach
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
                     on_attach(nil, args.buf)
-
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if not client then
-                        return
-                    end
-
-                    -- Clean, non-duplicating Format-on-Save block
-                    if client.supports_method("textDocument/formatting") then
-                        -- Clear existing formatting autocmds for THIS buffer only before adding a new one
-                        vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = args.buf })
-
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            group = format_augroup,
-                            buffer = args.buf,
-                            callback = function()
-                                vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-                            end,
-                        })
-                    end
                 end,
             })
 

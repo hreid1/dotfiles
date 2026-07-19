@@ -13,7 +13,7 @@ return {
 			vim.keymap.set("n", "<leader>a", function()
 				harpoon:list():add()
 			end)
-			vim.keymap.set("n", "<leader>hr", function()
+			vim.keymap.set("n", "<leader>hx", function()
 				harpoon:list():remove()
 			end)
 
