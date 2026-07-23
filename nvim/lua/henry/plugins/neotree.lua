@@ -16,7 +16,7 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>e", ":Neotree toggle left<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>e", "<cmd>:Neotree toggle left<CR>", { silent = true })
 		end,
 	},
 }
