@@ -1,49 +1,29 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        version = '*',
+        branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
+        keys = {
+            { '<leader>fd', '<cmd>Telescope find_files<cr>', desc = 'Find Files' },
+            { '<leader>fg', '<cmd>Telescope live_grep<cr>',  desc = 'Live Grep' },
+            { '<leader>fb', '<cmd>Telescope buffers<cr>',    desc = 'Find Buffers' },
+        },
         config = function()
-            require('telescope').setup({
-                defaults = {
-                    file_ignore_patterns = { "%.git/" },
-                    mappings = {
-                        i = {
-                            ["<C-j>"] = require("telescope.actions").move_selection_next,
-                            ["<C-k>"] = require("telescope.actions").move_selection_previous,
-                        },
-                        n = {
-                            ["j"] = require("telescope.actions").move_selection_next,
-                            ["k"] = require("telescope.actions").move_selection_previous,
-                        }
-                    },
-                    vimgrep_arguments = {
-                        'rg',
-                        '--color=never',
-                        '--no-heading',
-                        '--with-filename',
-                        '--line-number',
-                        '--column',
-                        '--smart-case',
-                        '--hidden',
-                        '--glob=!**/.git/*',
-                    },
-                },
+            local telescope = require('telescope')
+
+            telescope.setup({
                 pickers = {
                     find_files = {
-                        hidden = true,
-                        theme = "ivy",
-                    }
+                        theme = 'ivy',
+                    },
                 },
-                extensions = {},
             })
 
-            require('telescope').load_extension('fzf')
-
-            vim.keymap.set("n", "<leader>fd", require("telescope.builtin").find_files, { desc = "[F]in[d] Files" })
-        end
+            -- Enable fzf native extension if installed
+            pcall(telescope.load_extension, 'fzf')
+        end,
     },
 }
