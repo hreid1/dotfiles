@@ -11,5 +11,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.signcolumn = "yes"
+vim.opt.fillchars:append({ eob = " " })
 
 vim.opt.guicursor = "a:block"

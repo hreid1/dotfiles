@@ -1,1 +1,16 @@
-require("henry")
+require("vim._core.ui2").enable({})
+
+require("options")
+require("keymaps")
+
+require("plugins.lsp")
+require("plugins.blink")
+require("plugins.oil")
+require("plugins.telescope")
+require("plugins.conform")
+require("plugins.gitsigns")
+require("plugins.neogit")
+require("plugins.theme")
+require("plugins.lualine")
+require("plugins.autopairs")
+require("plugins.trouble")
