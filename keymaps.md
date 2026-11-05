@@ -166,6 +166,3 @@ Prefix: `C-b` (default). All keymaps below assume `C-b` first unless noted.
 | Mouse | on |
 | Default terminal | `tmux-256color` |
 | Status position | bottom |
-
-Status left: `#[bg=#89b4fa, fg=#1e1e2e, bold] #S` (session name)
-Status right: `#[bg=#89b4fa, bold, fg=#1e1e2e] %H:%M` (clock)
